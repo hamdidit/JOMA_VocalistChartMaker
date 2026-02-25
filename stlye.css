@@ -1,1 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    text-align: center;
+}
 
+#controls {
+    margin: 20px;
+}
+
+canvas {
+    background: #222;
+    border: 2px solid white;
+}
