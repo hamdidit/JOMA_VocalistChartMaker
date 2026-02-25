@@ -40,5 +40,33 @@ pauseBtn.addEventListener("click", () => {
     audio.pause();
 });
 
+canvas.addEventListener("click", function (e) {
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const lane = x < canvas.width / 2 ? 0 : 1;
+
+    const note = {
+        lane: lane,
+        y: y
+    };
+
+    notes.push(note);
+    drawNotes();
+});
+
+function drawNotes() {
+    drawLanes();
+
+    ctx.fillStyle = "cyan";
+
+    notes.forEach(note => {
+        const laneX = note.lane === 0 ? 0 : canvas.width / 2;
+        ctx.fillRect(laneX + 20, note.y - 5, canvas.width / 2 - 40, 10);
+    });
+}
+
 // Initial draw
 drawLanes();
+
